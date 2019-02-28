@@ -17,4 +17,15 @@ public class TransactionLogShould {
 
         assertEquals(expectedTransactions, transactionLog.getTransactions());
     }
+
+    @Test
+    void store_a_withdrawal() {
+        List<Transaction> transactions = new ArrayList<>();
+        TransactionLog transactionLog = new TransactionLog(transactions);
+        List<Transaction> expectedTransactions = asList(new Transaction(TransactionType.Withdraw, 1));
+
+        transactionLog.addWithdrawal(1);
+
+        assertEquals(expectedTransactions, transactionLog.getTransactions());
+    }
 }

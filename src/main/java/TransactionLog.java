@@ -13,7 +13,7 @@ public class TransactionLog {
     }
 
     public void addWithdrawal(int sum) {
-        throw new UnsupportedOperationException();
+        this.transactions.add(new Transaction(TransactionType.Withdraw, 1));
     }
 
     public Collection<Transaction> getTransactions() {
