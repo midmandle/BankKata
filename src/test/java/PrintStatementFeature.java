@@ -11,7 +11,8 @@ public class PrintStatementFeature {
 
     @Test
     void an_account_can_print_a_statement() {
-        Account account = new Account(printerMock);
+        TransactionLog transactionLog = new TransactionLog();
+        Account account = new Account(printerMock, transactionLog);
         account.deposit(1000);
         account.deposit(2000);
         account.withdraw(500);

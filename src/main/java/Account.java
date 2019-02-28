@@ -1,12 +1,14 @@
 public class Account {
     private ConsolePrinter printer;
+    private TransactionLog transactionLog;
 
-    public Account(ConsolePrinter printer) {
+    public Account(ConsolePrinter printer, TransactionLog transactionLog) {
         this.printer = printer;
+        this.transactionLog = transactionLog;
     }
 
     public void deposit(int sum) {
-        throw new UnsupportedOperationException();
+        transactionLog.addDeposit(sum);
     }
 
     public void withdraw(int sum) {
