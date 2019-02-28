@@ -12,7 +12,7 @@ public class Account {
     }
 
     public void withdraw(int sum) {
-        throw new UnsupportedOperationException();
+        transactionLog.addWithdrawal(sum);
     }
 
     public void printStatement() {

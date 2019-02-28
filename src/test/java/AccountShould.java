@@ -21,4 +21,13 @@ public class AccountShould {
 
         verify(transactionLogMock).addDeposit(1);
     }
+
+    @Test
+    void withdraw_a_sum() {
+        Account account = new Account(printer, transactionLogMock);
+
+        account.withdraw(1);
+
+        verify(transactionLogMock).addWithdrawal(1);
+    }
 }
