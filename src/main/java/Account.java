@@ -1,7 +1,5 @@
 import java.util.List;
 
-import static java.util.Arrays.asList;
-
 public class Account {
     private ConsolePrinter printer;
     private TransactionLog transactionLog;
@@ -24,8 +22,7 @@ public class Account {
 
         List<String> statementLines = statement.getLines();
 
-        for (String line :
-                statementLines) {
+        for (String line : statementLines) {
             this.printer.printLine(line);
         }
     }
