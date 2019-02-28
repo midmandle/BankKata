@@ -1,10 +1,9 @@
 import java.util.Collection;
-import java.util.List;
 
 public class TransactionLog {
-    private List<Transaction> transactions;
+    private Collection<Transaction> transactions;
 
-    public TransactionLog(List<Transaction> transactions) {
+    public TransactionLog(Collection<Transaction> transactions) {
         this.transactions = transactions;
     }
 
