@@ -4,6 +4,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @ExtendWith(MockitoExtension.class)
 public class PrintStatementFeature {
     @Mock
@@ -11,8 +14,10 @@ public class PrintStatementFeature {
 
     @Test
     void an_account_can_print_a_statement() {
-        TransactionLog transactionLog = new TransactionLog();
+        List<Transaction> transactions = new ArrayList<>();
+        TransactionLog transactionLog = new TransactionLog(transactions);
         Account account = new Account(printerMock, transactionLog);
+
         account.deposit(1000);
         account.deposit(2000);
         account.withdraw(500);
