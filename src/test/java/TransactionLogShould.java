@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,10 @@ public class TransactionLogShould {
     void store_a_deposit() {
         List<Transaction> transactions = new ArrayList<>();
         TransactionLog transactionLog = new TransactionLog(transactions);
-        List<Transaction> expectedTransactions = asList(new Transaction(TransactionType.Deposit, 1));
+        LocalDate date = LocalDate.now();
+        List<Transaction> expectedTransactions = asList(new Transaction(TransactionType.Deposit, 1, date));
 
-        transactionLog.addDeposit(1);
+        transactionLog.addDeposit(1, date);
 
         assertEquals(expectedTransactions, transactionLog.getTransactions());
     }
@@ -22,9 +24,10 @@ public class TransactionLogShould {
     void store_a_withdrawal() {
         List<Transaction> transactions = new ArrayList<>();
         TransactionLog transactionLog = new TransactionLog(transactions);
-        List<Transaction> expectedTransactions = asList(new Transaction(TransactionType.Withdraw, 1));
+        LocalDate date = LocalDate.now();
+        List<Transaction> expectedTransactions = asList(new Transaction(TransactionType.Withdraw, 1, date));
 
-        transactionLog.addWithdrawal(1);
+        transactionLog.addWithdrawal(1, date);
 
         assertEquals(expectedTransactions, transactionLog.getTransactions());
     }

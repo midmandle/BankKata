@@ -1,12 +1,15 @@
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Transaction {
-    private final TransactionType type;
-    private final int sum;
+    public final TransactionType type;
+    public final int sum;
+    public LocalDate date;
 
-    public Transaction(TransactionType type, int sum) {
+    public Transaction(TransactionType type, int sum, LocalDate date) {
         this.type = type;
         this.sum = sum;
+        this.date = date;
     }
 
     @Override
@@ -15,11 +18,13 @@ public class Transaction {
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
         return sum == that.sum &&
-                type == that.type;
+                type == that.type &&
+                date.equals(that.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, sum);
+        return Objects.hash(type, sum, date);
     }
 }
+
