@@ -17,10 +17,6 @@ public class AccountStatement {
         return statementLines;
     }
 
-    private static boolean hasTransactions(List<Transaction> transactions) {
-        return transactions.size() > 0;
-    }
-
     private static List<String> formatTransactions(List<Transaction> transactions) {
         List<String> formattedTransactions = new ArrayList<>();
         BigDecimal balance = new BigDecimal(0.00);
@@ -45,16 +41,8 @@ public class AccountStatement {
         return balance;
     }
 
-    private static boolean isWithdrawalTransaction(Transaction transaction) {
-        return transaction.type == TransactionType.Withdraw;
-    }
-
-    private static boolean isDepositTransaction(Transaction transaction) {
-        return transaction.type == TransactionType.Deposit;
-    }
-
     private static String formatToStatementLine(Transaction transaction, double balance) {
-        String formattedTransaction = "";
+        String formattedTransaction;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         String formattedDate = transaction.date.format(formatter);
 
@@ -71,11 +59,23 @@ public class AccountStatement {
         return formattedTransaction;
     }
 
+    private static boolean hasTransactions(List<Transaction> transactions) {
+        return transactions.size() > 0;
+    }
+
     private static String formatWithdrawalTransaction(Transaction transaction, double balance, String formattedDate) {
         return String.format("%s || || %d.00 || %.2f", formattedDate, transaction.sum, balance);
     }
 
     private static String formatDepositTransaction(Transaction transaction, double balance, String formattedDate) {
         return String.format("%s || %d.00 || || %.2f", formattedDate, transaction.sum, balance);
+    }
+
+    private static boolean isWithdrawalTransaction(Transaction transaction) {
+        return transaction.type == TransactionType.Withdraw;
+    }
+
+    private static boolean isDepositTransaction(Transaction transaction) {
+        return transaction.type == TransactionType.Deposit;
     }
 }
